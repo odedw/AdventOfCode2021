@@ -42,16 +42,16 @@ function calculateScore(closers: string): number {
   return closers.split("").reduce((prev, curr) => prev * 5 + score2[curr], 0);
 }
 const scores = input
-  .map((line) => removePairs(line))
-  .filter((line) => line.split("").every((c) => !closers.includes(c)))
+  .map((line) => removePairs(line)) // remove all matching pairs
+  .filter((line) => line.split("").every((c) => !closers.includes(c))) // remove invalid lines
   .map((line) =>
     line
       .split("")
       .reverse()
       .map((c) => closers[openers.indexOf(c)])
       .join("")
-  )
-  .map((line) => calculateScore(line))
-  .sort((a, b) => a - b);
+  ) // reverse convert to closers (calc the closers needed)
+  .map((line) => calculateScore(line)) // calculate score for each line
+  .sort((a, b) => a - b); // sort the scores
 
-console.log(scores[Math.floor(scores.length / 2)]);
+console.log(scores[Math.floor(scores.length / 2)]); // take the middle score
