@@ -1,7 +1,9 @@
+import { parseMatrix } from "../utils";
+
 let input: string[] = require("./input.json");
 
 // preparation
-const matrix: number[][] = Array.from({ length: input.length }, (_, i) => input[i].split("").map((n) => parseInt(n)));
+const matrix = parseMatrix(input);
 
 function getNeighbors(row: number, col: number): number[] {
   const coords = [
