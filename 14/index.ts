@@ -8,15 +8,15 @@ const rules = input
     return prev;
   }, {});
 
-// part 1
 let pairCount = {};
 for (let i = 0; i < initial.length - 1; i++) {
   const pair = initial.substring(i, i + 2);
   pairCount[pair] = pairCount[pair] ? pairCount[pair] + 1 : 1;
 }
 
-const STEPS = 10;
+const STEPS = 40;
 for (let i = 0; i < STEPS; i++) {
+  console.log(`Finished step ${i+1}`)
   const newCount = {};
   Object.keys(pairCount).forEach((pair) => {
     const newPairs = rules[pair];
