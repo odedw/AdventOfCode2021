@@ -5,18 +5,16 @@ const selected = new Set<string>();
 
 function mark(i: number, j: number) {
   const prop = `${j},${i}`;
-  // console.log(prop);
   if (!points[prop]) {
     points[prop] = 0;
   }
 
   if (++points[prop] == 2) selected.add(prop);
 }
+
 input
   .map((line) => line.split(",").map((i) => parseInt(i)))
   .forEach((s) => {
-    // console.log(`=========================`);
-
     if (s[0] == s[2] || s[1] == s[3]) {
       for (let j = Math.min(s[0], s[2]); j <= Math.max(s[0], s[2]); j++) {
         for (let i = Math.min(s[1], s[3]); i <= Math.max(s[1], s[3]); i++) {
